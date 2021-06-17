@@ -32,6 +32,11 @@ const App = () => {
       .then( res => {
         const modMovies = movies.filter(movie => movie.id !== res.data)
         setMovies(modMovies);
+        //If in favorites list and then deleted
+        if (favoriteMovies.find(favMovie => favMovie.id === res.data)){
+          const newFavorites = favoriteMovies.filter(favorite => favorite.id !== res.data)
+          setFavoriteMovies(newFavorites);
+        }
       })
       .catch( err => {
         console.log(err)
@@ -39,7 +44,10 @@ const App = () => {
   }
 
   const addToFavorites = (movie) => {
-    
+    if (favoriteMovies.find(favMovie => favMovie.id === movie.id)){
+      return alert("Movie already exists in favorites list!")
+    }
+    setFavoriteMovies([...favoriteMovies, movie])
   }
 
   return (

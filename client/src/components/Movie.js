@@ -26,15 +26,10 @@ const Movie = (props) => {
 
     const deleteHandler = () => {
         setShowModal(true);
-        // axios.delete(`http://localhost:5000/api/movies/${id}`)
-        //     .then( res => {
-        //         // console.log(res)
-        //         deleteMovie(res.data)
-        //         push('/movies')
-        //     })
-        //     .catch( err => {
-        //         console.log(err)
-        //     })
+    }
+
+    const favoritesHandler = () => {
+        addToFavorites(movie)
     }
 
     return(<div className="modal-page col">
@@ -66,7 +61,7 @@ const Movie = (props) => {
                         </section>
                         
                         <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
+                            <span className="m-2 btn btn-dark" onClick={favoritesHandler}>Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
                             <span className="delete">
                                 { showModal ? DeleteMovieModal ({setShowModal, deleteMovie, push, id}) :
