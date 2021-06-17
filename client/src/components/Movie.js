@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 
+import DeleteMovieModal from './DeleteMovieModal';
+
 import axios from 'axios';
 
 const Movie = (props) => {
-    const { addToFavorites } = props;
+    const { addToFavorites, deleteMovie } = props;
 
     const [movie, setMovie] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
     const { id } = useParams();
     const { push } = useHistory();
@@ -22,15 +25,16 @@ const Movie = (props) => {
     }, [id]);
 
     const deleteHandler = () => {
-        axios.delete(`http://localhost:5000/api/movies/${id}`)
-            .then( res => {
-                // console.log(res)
-                props.deleteMovie(res.data)
-                push('/movies')
-            })
-            .catch( err => {
-                console.log(err)
-            })
+        setShowModal(true);
+        // axios.delete(`http://localhost:5000/api/movies/${id}`)
+        //     .then( res => {
+        //         // console.log(res)
+        //         deleteMovie(res.data)
+        //         push('/movies')
+        //     })
+        //     .catch( err => {
+        //         console.log(err)
+        //     })
     }
 
     return(<div className="modal-page col">
@@ -64,7 +68,11 @@ const Movie = (props) => {
                         <section>
                             <span className="m-2 btn btn-dark">Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
-                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" onClick={deleteHandler}/></span>
+                            <span className="delete">
+                                { showModal ? DeleteMovieModal ({setShowModal, deleteMovie, push, id}) :
+                                    <input type="button" className="m-2 btn btn-danger" value="Delete" onClick={deleteHandler}/>
+                                }
+                            </span>
                         </section>
                     </div>
                 </div>
