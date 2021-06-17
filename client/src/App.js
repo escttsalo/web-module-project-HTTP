@@ -27,6 +27,16 @@ const App = () => {
       });
   }, []);
 
+  //update favorites when edits happen
+  useEffect( () => {
+    const newFavorites = movies.filter(movie => {
+      return favoriteMovies.find(favMovie => movie.id === favMovie.id)
+    })
+
+    console.log(newFavorites)
+    setFavoriteMovies(newFavorites)
+  }, [movies])
+
   const deleteMovie = (id)=> {
     axios.delete(`http://localhost:5000/api/movies/${id}`)
       .then( res => {
