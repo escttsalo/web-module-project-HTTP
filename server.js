@@ -56,6 +56,14 @@ let movies = [
     genre: "Drama",
     description: "A successful lawman's plans to retire anonymously in Tombstone, Arizona are disrupted by the kind of outlaws he was famous for eliminating."
   }
+  {
+    id: 6,
+    title: "Demon Castle Dracula X: Chi No Rondo",
+    director: "Konami",
+    metascore: 98,
+    genre: "Horror",
+    description: `Taking place in 1792, Rondo of Blood is set in the fictional universe of the Castlevania series. The story centers around the eternal conflict between the vampire hunters of the Belmont Clan and the immortal vampire Dracula, who has once again been resurrected. The protagonist is 19-year-old Richter Belmont, heir to the whip "Vampire Killer" and Simon Belmont's direct descendant. He comes to the castle after his beloved Annette is kidnapped by Dracula's servant, Shaft, as bait for a trap. Richter makes his way through Dracula's castle, defeating his minions, including the spirit of Death, a headless knight, and a minotaur, all of whom attempt to stop Richter. Along the way, Richter can free various women kidnapped by Dracula's servants to feed him, including his distant relative Maria Renard, an orphaned 12-year-old who insists on joining him; Terra, a nun who mistakes him for a manifestation of God; Iris, the daughter of the village doctor; and finally Annette. After vanquishing Shaft, Richter confronts Dracula and defeats him before exposing him to sunlight, causing him to vanish. Dracula's castle then collapses into the sea as Richter escapes on horseback.`
+  }
 ];
 
 let movieId = movies.length;
